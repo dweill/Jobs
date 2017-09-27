@@ -14,6 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       payLoad: null,
+      authorized: false,
     }
     const urlParams = new URLSearchParams(window.location.search);
     let code;
@@ -55,7 +56,7 @@ class App extends Component {
       }).then(response => {
         let payLoad = response.data.children
         console.log(response.data.data.children)
-        this.setState({ payLoad: response.data.data.children });
+        this.setState({ payLoad: response.data.data.children, authorized: true });
         console.log(this);
       }).catch(error => console.error(error))
     }
@@ -68,7 +69,7 @@ class App extends Component {
             <h1>Lurker</h1>
             <h2>A Client for Reddit</h2>
           </div>
-          <Button text="Let's get started" link="https://www.reddit.com/api/v1/authorize.compact?client_id=C4kQu5gu5XoRWw&response_type=code&state=lfadlfkjs&redirect_uri=http%3A%2F%2Flocalhost%3A3000&duration=permanent&scope=read" />
+          {this.state.authorized ? <div></div> : <Button text="Let's get started" link="https://www.reddit.com/api/v1/authorize.compact?client_id=C4kQu5gu5XoRWw&response_type=code&state=lfadlfkjs&redirect_uri=http%3A%2F%2Flocalhost%3A3000&duration=permanent&scope=read" />}
         </div>
         <div>
           <Table data={this.state.payLoad}/>
