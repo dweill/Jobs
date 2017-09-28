@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+
 import './App.css';
 import Button from './Button';
 import Table from './Table';
@@ -8,7 +8,6 @@ import axios from 'axios';
 
 
 
-// const pop = ['rickle', 'pickle', 'tickle'];
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +17,9 @@ class App extends Component {
     }
     const urlParams = new URLSearchParams(window.location.search);
     let code;
-    // let payLoad;
-
     if (urlParams.get('state') === "lfadlfkjs") {
       code = urlParams.get('code')
     }
-    console.log(code);
     const retrieval = () => {
       axios({
         method: 'POST',
@@ -38,7 +34,6 @@ class App extends Component {
           'Authorization': 'Basic QzRrUXU1Z3U1WG9SV3c6TExneGFMTjhrc1I3Z3ZSeUN4NVhqaTI5anFr'
         },
       }).then(res => {
-        console.log(res.data);
         let token = res.data.access_token;
         posts(token);
 
@@ -55,9 +50,7 @@ class App extends Component {
         }
       }).then(response => {
         let payLoad = response.data.children
-        console.log(response.data.data.children)
         this.setState({ payLoad: response.data.data.children, authorized: true });
-        console.log(this);
       }).catch(error => console.error(error))
     }
   }
