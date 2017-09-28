@@ -45,7 +45,7 @@ class App extends Component {
       }).catch(err => console.error(err))
     }
     if (code) {
-      var params = "grant_type=" + 'authorization_code' + "&code=" + code + "&redirect_uri=" + 'http://localhost:3000';
+      var params = "grant_type=" + 'authorization_code' + "&code=" + code + "&redirect_uri=" + 'http://104.131.120.37/';
       retrieval();
     }
     const posts = (token) => {
@@ -69,7 +69,7 @@ class App extends Component {
             <h1>Lurker</h1>
             <h2>A Client for Reddit</h2>
           </div>
-          {this.state.authorized ? <div></div> : <Button text="Let's get started" link="https://www.reddit.com/api/v1/authorize.compact?client_id=C4kQu5gu5XoRWw&response_type=code&state=lfadlfkjs&redirect_uri=http%3A%2F%2Flocalhost%3A3000&duration=permanent&scope=read" />}
+          {this.state.authorized ? <div></div> : <Button text="Let's get started" link="https://www.reddit.com/api/v1/authorize.compact?client_id=C4kQu5gu5XoRWw&response_type=code&state=lfadlfkjs&redirect_uri=http://104.131.120.37/&duration=permanent&scope=read" />}
         </div>
         <div>
           <Table data={this.state.payLoad}/>
